@@ -1,0 +1,39 @@
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- If account is verified and mustn't pay -->
+    <div ng-show="account.shouldPay === 0 || account.shouldPay === 1">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+
+                <div class="col-md-4 col-sm-4">
+                    <pinterest-account-card account="account" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></pinterest-account-card>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px;" ng-show="boards.length > 0">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="board in boards">
+                    <pinterest-board-card account="account" board="board"></pinterest-board-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px;" ng-hide="boards.length > 0">
+            <div class="col-lg-12">
+                <h1 class="font-bold text-center">
+                    <i class="twa twa-3x twa-rocket"></i>
+                </h1>
+                <h3 class="font-bold text-center">
+                    {{"START_UPLOADING_PINTEREST" | translate}}.
+                </h3>
+
+                <div class="error-desc text-center">
+                    {{"ALL_UPLOADED_POSTS_WILL_BE_DISPLAYED_HERE" | translate}}.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

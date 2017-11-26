@@ -1,0 +1,154 @@
+<!--
+    If account is verified
+    and must pay
+-->
+
+<!--<div class="contact-box" ng-show="(account.isVerified) === 1 && account.shouldPay === 2">-->
+
+    <!--<div class="row">-->
+        <!--<div class="col-xs-4">-->
+            <!--<div class="text-center">-->
+                <!--<a href="http://instagram.com/{{account.username}}" target="blank">-->
+                    <!--<img alt="image" class="img-circle m-t-xs img-responsive" ng-src="{{account.profilePicture}}">-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-8">-->
+            <!--<h3><strong>{{account.fullName}}</strong></h3>-->
+
+            <!--<p ng-if="state.name !== 'dashboard.account.wall'" >-->
+                <!--<a ui-sref="dashboard.account.wall({accountId: account.id})" class="btn-link">-->
+                    <!--@{{account.username | limitTo: 15}}-->
+                    <!--<span ng-if="account.username.length > 15">...</span>-->
+                <!--</a>-->
+            <!--</p>-->
+            <!--<p ng-if="state.name === 'dashboard.account.wall'">-->
+                <!--@{{account.username | limitTo: 15}}-->
+                <!--<span ng-if="account.username.length > 15">...</span>-->
+            <!--</p>-->
+
+            <!--<address>-->
+
+                <!--<i class="fa fa-image"></i>  {{account.mediaCnt}}-->
+                <!--<br>-->
+                <!--<i class="fa fa-users"></i>  {{account.followedByCnt}}-->
+                <!--<br>-->
+                <!--<i class="fa fa-user-plus"></i>    {{account.followsCnt}}-->
+            <!--</address>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row text-center">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<span class="text-muted">{{'DASH_ACCOUNTS_PAYMENT_IS_REQUIRED' | translate}}</span>-->
+    <!--</div>-->
+    <!--<div class="row text-center">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a class="btn btn-w-m btn-xs btn-danger btn-outline" ui-sref="dashboard.pay({accountId: account.id})"'>-->
+        <!--{{'DASH_ACCOUNTS_PURCHASE' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="row text-center" ng-hide="state.name === 'dashboard.account.wall'">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a class="btn btn-w-m btn-xs btn-primary btn-outline" ui-sref="dashboard.account.wall({accountId: account.id})">-->
+            <!--{{'DASH_ACCOUNTS_SELECT' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="row text-center" ng-show="userInfo.role === 1">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a ui-sref="dashboard.account-settings({accountId: account.id})"-->
+           <!--class="btn btn-w-m btn-xs btn-success btn-outline">-->
+            <!--{{'DASH_ACCOUNTS_TOOLTIP_SETTINGS' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="row text-center" ng-show="userInfo.role === 1">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a ng-click="confirmDeleteAccount(account.id)" class="btn btn-w-m btn-xs btn-default btn-outline">-->
+            <!--{{'NAV_ACCOUNTS_TOOLTIP_DELETE' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+    <!--<div class="clearfix"></div>-->
+<!--</div>-->
+
+
+<!--
+    If account is verified
+    and mustn't pay
+-->
+
+<div class="contact-box" ng-show="account.shouldPay === 0 || account.shouldPay === 1" style="border-top: 2px solid #ab171e; padding-top: 5px;">
+
+    <div class="row">
+        <i class="fa fa-pinterest pull-right"></i>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="text-center">
+                <a href="http://pinterest.com/{{account.username}}" target="blank">
+                    <img alt="image" class="img-circle m-t-xs img-responsive" ng-src="{{account.profilePicUrl}}">
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <h3><strong>{{account.fullName}}</strong></h3>
+
+            <p ng-if="state.name !== 'dashboard.pinterest-account.boards'">
+                <a ui-sref="dashboard.pinterest-account.boards({accountId: account.id})" class="btn-link">
+                    @{{account.username | limitTo: 15}}
+                    <span ng-if="account.username.length > 15">...</span>
+                </a>
+            </p>
+            <p ng-if="state.name === 'dashboard.pinterest-account.boards'">
+                @{{account.username | limitTo: 15}}
+                <span ng-if="account.username.length > 15">...</span>
+            </p>
+
+            <!--ToDo: Followers etc.-->
+            <!--<address>-->
+                <!--<i class="fa fa-image"></i>  {{account.mediaCnt}}-->
+                <!--<br>-->
+                <!--<i class="fa fa-users"></i>  {{account.followedByCnt}}-->
+                <!--<br>-->
+                <!--<i class="fa fa-user-plus"></i>    {{account.followsCnt}}-->
+            <!--</address>-->
+        </div>
+    </div>
+
+    <!--ToDo: Expiration Date-->
+    <!--<div class="row text-center">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<span class="text-muted">{{'DASH_ACCOUNTS_ACTIVE' | translate}}: {{account.activeUntilWord}}</span>-->
+    <!--</div>-->
+
+    <!--ToDo: Payment-->
+    <!--<div class="row text-center" ng-show="account.shouldPay === 1">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a class="btn btn-w-m btn-xs btn-danger btn-outline" ui-sref="dashboard.pay({accountId: account.id})">-->
+            <!--{{'DASH_ACCOUNTS_PURCHASE' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <div class="row text-center" ng-hide="state.name === 'dashboard.pinterest-account.boards'">
+        <hr style="margin-top: 5px; margin-bottom: 5px;">
+        <a class="btn btn-w-m btn-xs btn-primary btn-outline" ui-sref="dashboard.pinterest-account.boards({accountId: account.id})">
+            {{'DASH_ACCOUNTS_SELECT' | translate}}
+        </a>
+    </div>
+
+    <!--ToDo: Settings-->
+    <!--<div class="row text-center" ng-show="userInfo.role === 1">-->
+        <!--<hr style="margin-top: 5px; margin-bottom: 5px;">-->
+        <!--<a ui-sref="dashboard.account-settings({accountId: account.id})"-->
+           <!--class="btn btn-w-m btn-xs btn-success btn-outline">-->
+            <!--{{'DASH_ACCOUNTS_TOOLTIP_SETTINGS' | translate}}-->
+        <!--</a>-->
+    <!--</div>-->
+    <div class="row text-center" ng-show="userInfo.role === 1">
+        <hr style="margin-top: 5px; margin-bottom: 5px;">
+        <a ng-click="confirmDeleteAccount(account.id)" class="btn btn-w-m btn-xs btn-default btn-outline">
+            {{'NAV_ACCOUNTS_TOOLTIP_DELETE' | translate}}
+        </a>
+    </div>
+    <div class="clearfix"></div>
+</div>
+

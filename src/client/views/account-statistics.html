@@ -1,0 +1,92 @@
+<!--<page-heading title="Account Statistics"></page-heading>-->
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <div class="row m-b-lg m-t-lg m-r-xs m-l-xs">
+        <div class="col-md-6 col-xs-12">
+            <div class="profile-image">
+                <img ng-src="{{account.profilePicture}}" class="img-circle circle-border m-b-md" alt="{{account.username}}">
+            </div>
+            <div class="profile-info">
+                <div>
+                    <div>
+                        <h2 class="no-margins">
+                            {{account.fullName}}
+                        </h2>
+                        <h4>@{{account.username}}</h4>
+                        <small>
+                            {{account.bio}}
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <h1 class="no-margins">{{account.mediaCnt}}</h1>
+            <h5 class="m-b-xs">Posts</h5>
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <h1 class="no-margins">{{account.followedByCnt}}</h1>
+            <h5 class="m-b-xs">Followers</h5>
+        </div>
+        <div class="col-md-2 col-xs-4">
+            <h1 class="no-margins">{{account.followsCnt}}</h1>
+            <h5 class="m-b-xs">Following</h5>
+        </div>
+
+    </div>
+
+    <!--<div class="row col-md-12 text-center">-->
+        <!--&lt;!&ndash;<div class="jumbotron">&ndash;&gt;-->
+            <!--<h1>Coming soon</h1>-->
+            <!--<p>There will be displayed useful information.</p>-->
+            <!--&lt;!&ndash;<p><a href="http://benpickles.github.io/peity/" target="_blank" class="btn btn-primary btn-lg" role="button">Learn more about Peity</a>&ndash;&gt;-->
+            <!--</p>-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="">
+
+                    <!--<div class="row">-->
+                        <!--<div class="col-sm-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label" for="product_name">Project Name</label>-->
+                                <!--<input type="text" id="product_name" name="product_name" value="" placeholder="Project Name" class="form-control">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-2">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label" for="price">Name</label>-->
+                                <!--<input type="text" id="price" name="price" value="" placeholder="Name" class="form-control">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-2">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label" for="quantity">Company</label>-->
+                                <!--<input type="text" id="quantity" name="quantity" value="" placeholder="Company" class="form-control">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-sm-4">-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="control-label" for="status">Status</label>-->
+                                <!--<select name="status" id="status" class="form-control">-->
+                                    <!--<option value="1" selected="">Completed</option>-->
+                                    <!--<option value="0">Pending</option>-->
+                                <!--</select>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <pa-statistics-table posts="posts" load-data="vm.nextPage" load-data-is-disabled="vm.loadImagesBusy"></pa-statistics-table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

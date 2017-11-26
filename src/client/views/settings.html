@@ -1,0 +1,124 @@
+<page-heading title="{{'NAV_SETTINGS' | translate}}" steps="breadcrumbSteps"></page-heading>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="wrapper wrapper-content">
+                <div class="text-center">
+                    <h3 class="font-bold">{{'DASH_SETTINGS_H_PASSWORD' | translate}}</h3>
+                    <div class="error-desc">
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                        <form name="changePasswordForm" class="form-horizontal">
+                            <div class="form-group">
+                                <input type="password" ng-model="vm.currPassword" id="currPassword" name="currPassword" class="form-control" required placeholder="{{'DASH_SETTINGS_CURRENT_PASSWORD_PLACEHOLDER' | translate}}">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" ng-model="vm.newPassword" ng-model-options="{debounce: vm.debounceValue}" id="newPassword" name="newPassword" class="form-control" required placeholder="{{'DASH_SETTINGS_NEW_PASSWORD_PLACEHOLDER' | translate}}">
+                                <password-strength-estimator password="{{vm.newPassword}}"></password-strength-estimator>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-2" style="padding-left: 0;">
+                                   <button ng-class="{'btn btn-primary' : !vm.sending, 'btn btn-primary disabled' : vm.sending}" ng-click="vm.changePassword()">{{'DASH_SETTINGS_SAVE_BUTTON' | translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="wrapper wrapper-content">
+                <div class="text-center">
+                    <h3 class="font-bold">{{'DASH_SETTINGS_H_LANGUAGE' | translate}}</h3>
+                    <div class="error-desc">
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2 text-center">
+                        <a href="" ng-click="vm.changeLanguage('en-US')" style="margin: 2px 5px;">English </a>
+                        <a href="" ng-click="vm.changeLanguage('ru-RU')" style="margin: 2px 5px;">Русский </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="text-center">
+            <h3 class="font-bold">{{'DASH_SETTINGS_H_EMAIL_SUBSCRIPTION' | translate}}</h3>
+            <div class="error-desc">
+            </div>
+        </div>
+        <br>
+        <div class="row" ng-repeat="subscription in vm.subscriptions">
+            <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                <div class="text-center">
+                    <label class="col-md-8 col-xs-8"><h4 class="font-bold" style="margin-top: 5px;">{{subscription.name | translate}}</h4></label>
+
+                    <div class="col-md-3 col-xs-3">
+                        <input type="checkbox" ng-class="{'js-switch': !vm.sending, 'js-switch disabled': vm.sending}" ui-switch="{color:'#1AB394'}" ng-model="subscription.isActive" ng-change="vm.subscribeEmail(subscription.type, subscription.isActive)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <hr>
+        </div>
+    </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col-md-12 col-xs-12">-->
+            <!--<div class="wrapper wrapper-content">-->
+                <!--<div class="text-center">-->
+                    <!--<i class="fa fa-paper-plane"></i>-->
+                    <!--<h3 class="font-bold" style="display: inline-block; margin-left: 3px;">Telegram</h3>-->
+                    <!--<div class="error-desc">-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="form-horizontal">-->
+                    <!--<div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">-->
+                        <!--<form name="addTelegramForm" class="form-horizontal">-->
+                            <!--<div class="input-group m-b">-->
+                                <!--<span class="input-group-addon">@</span>-->
+                                <!--<input type="text" placeholder="{{'LOGIN_INPUT_USERNAME_PLACEHOLDER' | translate}}" class="form-control" ng-model="vm.telegramUsername" name="telegramUsername" required>-->
+                                <!--<span class="input-group-btn">-->
+                                    <!--<button ng-class="{'btn btn-primary' : !vm.sending, 'btn btn-primary disabled' : vm.sending}" ng-click="vm.addTelegram()">{{'DASH_SETTINGS_SAVE_BUTTON' | translate}}</button>-->
+                                <!--</span>-->
+                            <!--</div>-->
+                        <!--</form>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+
+
+</div>

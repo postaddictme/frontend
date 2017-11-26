@@ -1,0 +1,130 @@
+<style>
+    .fileUpload {
+	position: relative;
+	overflow: hidden;
+	margin: 10px;
+    }
+    .fileUpload input.upload {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            filter: alpha(opacity=0);
+    }
+</style>
+<form class="form-horizontal m-t-md">
+<div class="modal-header" style="padding: 0;">
+
+    <div class="form-group" id="photo">
+
+    </div>
+
+</div>
+
+<div class="modal-body" id="myModal" style="padding: 20px 30px 0px 30px;">
+
+    <div class="ibox float-e-margins">
+
+        <div ng-show="fileType === 0" class="form-group">
+<!--            <div class="widget  p-lg text-center">
+                <div class="m-b-md">-->
+            <!--<div class="thumbnail col-lg-10 col-lg-offset-1">-->
+                <img id="blah" ng-src="{{imgSrc}}" class="col-lg-12 img-rounded" alt="your image">
+            <!--</div>-->
+<!--                </div>
+            </div>-->
+        </div>
+
+        <div ng-show="fileType === 1" class="form-group">
+            <div class="widget  p-lg text-center">
+                <div class="m-b-md">
+                    <video controls>
+                        <source ng-src="{{imgSrc}}">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+<!--        <div ng-show="fileType === 1" class="form-group">
+            <div class="widget  p-lg text-center">
+                <div class="m-b-md">
+                    <i class="fa fa-file-video-o fa-4x"></i>
+                    <h1 class="m-xs">Video</h1>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="form-group" id="caption">
+            <label class="col-sm-3 control-label">Caption</label>
+
+            <div class="col-sm-7" style="padding-right: 0px; padding-left: 0px;">
+                <div class="wysibb">
+                    <div class="wysibb-toolbar">
+                        <div class="wysibb-toolbar-container">
+                            <div class="wysibb-toolbar-btn wbb-smilebox wbb-smilebox">
+                                <span class="fa fa-smile-o ve-tlb-smilebox1 btn-inner"></span>
+                                <div class="wbb-list" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wysibb-text">
+                        <textarea ng-model="input.caption" id="imageCaption" rows="3" cols="20" placeholder="Enter caption (max 1000 symbols)" maxlength="1000" class="wysibb-texarea" style="display: none;"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group"  ng-show="showSchedule">
+            <label class="col-sm-2 col-sm-offset-1 control-label">Time</label>
+
+            <div class="col-sm-7 input-group">
+                <input ng-model="input.publishDate" id="datepicker" readonly="readonly" style="float:left; background-color: #FFFFFF; background-image: none; border: 1px solid #e5e6e7; border-radius: 1px; color: inherit; display: block; padding: 6px 12px; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;width: 40%;">
+                <input readonly="readonly" style="float:left; background-color: #FFFFFF; text-align: center; background-image: none; border: 0px; border-radius: 0px; color: inherit; display: block; padding: 6px 12px; width: 15%;" value="at">
+                <input type="text" id="hourminute" class="form-control" style="display: inline-block; width: 20%; height: 32px; z-index: 0;" data-mask="99:99" placeholder=""  ng-model="input.hourminute"  maxlength="5" size="5">
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-white" ng-click="cancelPost()">Close</button>
+    <div class="btn-group" role="group" aria-label="...">
+        <a type="button" ng-class="{'btn btn-primary' : !sending, 'btn btn-primary disabled' : sending}" ng-click="sendMail()">{{postButtonText}}</a>
+        <div class="btn-group" ng-hide="showSchedule">
+            <button data-toggle="dropdown" ng-class="{'btn btn-primary dropdown-toggle' : !sending, 'btn btn-primary dropdown-toggle disabled' : sending}" aria-expanded="false"><span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-at-top">
+                <!--<li><a href="">Now</a></li>-->
+                <!--<li class="divider"></li>-->
+                <li><a ng-click="showTime()">By schedule</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+$(function() {
+   $("#datepicker").datepicker({
+       showAnim: "fade",
+       dateFormat: "dd/mm/yy",
+       minDate: 0
+   });
+ });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#imageCaption").wysibb();
+
+        $( "span.btn-inner" ).one( "click", function() {
+            $("img.sm").lazyload({
+                event: "scrollstop",
+                effect: 'fadeIn',
+                threshold : 2500
+            });
+        });
+
+    });
+</script>

@@ -1,0 +1,60 @@
+
+
+    <div class="ibox float-e-margins" ng-show="account.suggestStatus == 0">
+
+        <div class="ibox-content ibox-heading">
+            <h3>{{"SUGGESTED_POSTS" | translate}}</h3>
+            <!--<small><i class="fa fa-tim"></i> Let other people to suggest you posts!</small>-->
+            <div class="text-navy">{{"SUGGEST_CARD_P" | translate}}</div>
+        </div>
+        <div class="ibox-content">
+            <div class="feed-activity-list">
+
+                <div class="feed-element">
+                    <div>
+                        <div>{{"TURN_IT_ON_IN" | translate}} <a ui-sref="dashboard.account-settings({accountId: account.id})">{{"ACCOUNTS_SETTINGS" | translate}}</a></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="ibox float-e-margins" ng-show="account.suggestStatus == 1">
+
+        <div class="ibox-content ibox-heading text-primary" style="padding-bottom: 10px;">
+            <h3>{{"SUGGESTED_POSTS" | translate}}</h3>
+            <!--<div class="text-navy">Let your followers create content for you or just share interesting posts!</div>-->
+        </div>
+        <div class="ibox-content">
+            <div class="feed-activity-list">
+
+                <div class="feed-element">
+                    <div>
+                        <div class="stat-percent font-bold text-info">
+                            <span ng-if="account.statistics.newSuggestedMediaCnt > 0">+</span>
+                            {{account.statistics.newSuggestedMediaCnt}}
+                        </div>
+                        <span>{{"NEW" | translate}}</span>
+                    </div>
+                    <div>
+                        <div class="stat-percent font-bold text-navy">{{account.statistics.acceptedPostCnt}}</div>
+                        <span>{{"APPROVED_POSTS" | translate}}</span>
+                    </div>
+                    <div>
+                        <div class="stat-percent font-bold text-danger">{{account.statistics.rejectedPostCnt}}</div>
+                        <span>{{"REJECTED_POSTS" | translate}}</span>
+                    </div>
+                </div>
+                <div ng-hide="state.name === 'dashboard.suggested-posts'" class="feed-element" style="border-bottom: none; padding-bottom: 0px;">
+                    <div class="text-center">
+                        <a class="btn btn-w-m btn-sm btn-primary btn-outline" ui-sref="dashboard.suggested-posts({accountId: account.id})">
+                            {{"MANAGE" | translate}}
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

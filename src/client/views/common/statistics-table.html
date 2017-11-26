@@ -1,0 +1,39 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th width="5%">#</th>
+        <th width="5%" class="text-center">Thumbnail</th>
+        <th width="30%" class="text-center">Caption</th>
+        <th width="20%" class="text-center">Date</th>
+        <th width="10%" class="text-center">Status</th>
+        <th width="30%" class="text-center">Action</th>
+    </tr>
+    </thead>
+    <tbody infinite-scroll='loadData()' infinite-scroll-disabled='loadDataIsDisabled' infinite-scroll-distance='1'>
+        <tr ng-repeat="post in posts">
+            <td width="5%">{{$index + 1}}</td>
+            <td width="5%" class="text-center"><img ng-src="{{post.thumbnailUrl}}" class="img-sm" style="width: 20px; height: auto;" alt="post"></td>
+            <td width="30%"><div ng-bind-html="post.caption  | replaceImgWithAlt | limitTo:30"></div></td>
+            <td width="20%" class="text-center">{{post.formattedPublishDate}}</td>
+            <td width="10%" class="text-center">
+                <span class="label label-success" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.SCHEDULED">{{'SCHEDULED' | translate}} </span>
+                <span class="label label-info" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.PUBLISHING">{{'PUBLISHING' | translate}}</span>
+                <span class="label label-primary" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.PUBLISHED">{{'PUBLISHED' | translate}}</span>
+                <span class="label" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.FAILED">{{'FAILED' | translate}}</span>
+                <span class="label label-warning" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.UNKNOWN">{{'UNKNOWN' | translate}}</span>
+                <span class="label label-warning" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.DELETED">{{'DELETED' | translate}}</span>
+                <span class="label label-danger" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.DELETED_FROM_INSTAGRAM">{{'DELETED_FROM_INSTAGRAM' | translate}}</span>
+                <span class="label  label-info" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.DELETING_FROM_INSTAGRAM">{{'DELETING_FROM_INSTAGRAM' | translate}}</span>
+                <span class="label  label-success" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.SCHEDULED_TO_DELETE_FROM_INSTAGRAM">{{'SCHEDULED_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+                <span class="label" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.FAILED_TO_DELETE_FROM_INSTAGRAM">{{'FAILED_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+                <span class="label  label-warning" ng-show="(post.isPublished) === INSTAGRAM_POST_STATUS.UNKNOWN_TO_DELETE_FROM_INSTAGRAM">{{'UNKNOWN_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+            </td>
+            <td width="30%" class="text-center">
+                <button class="btn btn-primary btn-outline btn-xs" type="button"><i class="fa fa-pencil"></i>&nbsp;Edit</button>
+                <button class="btn btn-success btn-outline btn-xs" type="button"><i class="fa fa-circle-o"></i>&nbsp;Repeat</button>
+                <button class="btn btn-danger btn-outline btn-xs" type="button"><i class="fa fa-times"></i>&nbsp;Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

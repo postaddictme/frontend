@@ -1,0 +1,37 @@
+<!--<page-heading title="Media"></page-heading>-->
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="ibox float-e-margins">
+<!--                <div class="ibox-title">
+                    <h5>Messages</h5>
+                    <div ibox-tools></div>
+                </div>-->
+                <div class="ibox-content ibox-heading">
+                    <h3><i class="fa fa-comment-o"></i> Comments</h3>
+                    <small ng-show="count === 1">You have {{mediaComments.length}} comment.</small>
+                    <small ng-show="count <= 150 && count > 1">You have {{mediaComments.length}} comments.</small>
+                    <small ng-show="count > 150">The last 150 comments of {{count}}.</small>
+                </div>
+                <div class="ibox-content">
+                    <div class="feed-activity-list">
+
+                        <div ng-repeat="comment in mediaComments" class="feed-element">
+                            <div>
+                                <small class="pull-right text-navy"><span style="float: right;" tooltip-placement="top" tooltip="Delete">
+                                        <!--<a ng-click="deleteMediaComment(comment.id)"><i class="fa fa-times"></i></a>-->
+                                    </span></small>
+                                <strong>@{{comment.from.username}}</strong>
+
+                                <div ng-bind-html="comment.text"></div>
+                                <small class="text-muted">{{comment.formatted_created_time}}</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

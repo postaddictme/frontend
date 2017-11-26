@@ -1,0 +1,67 @@
+<page-heading title="{{'DASH_PURCHASE' | translate}}" steps="breadcrumbSteps"></page-heading>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+            <div class="m-b-md">
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4 text-center">
+                        <a href="http://instagram.com/{{vm.account.username}}" target="blank">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" ng-src="{{vm.account.profilePicture}}" fallback-src="images/empty-profile-image.png" style="margin-left: auto; margin-right: auto;">
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row text-center">
+
+                    <a ui-sref="dashboard.account.wall({accountId: vm.account.id})" class="btn-link">
+                        @{{vm.account.username}}
+                    </a>
+
+                    <hr style="margin-top: 5px; margin-bottom: 5px;">
+
+                    <a class="btn btn-primary btn-outline" ng-click="vm.prolongForFree()">
+                        {{"DASH_ACCOUNTS_PURCHASE_FOR_FREE" | translate}}
+                    </a>
+
+                    <!--<p class="text-muted" ng-show="vm.account.isVerified === 1 && vm.account.shouldPay != 2">{{'DASH_ACCOUNTS_ACTIVE' | translate}}: {{vm.account.activeUntilWord}}</p>-->
+                    <!--<p class="text-muted" ng-show="vm.account.isVerified === 1 && vm.account.shouldPay == 2">{{'DASH_ACCOUNTS_PAYMENT_IS_REQUIRED' | translate}}</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row">-->
+        <!--<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">-->
+            <!--<div ng-repeat="option in vm.paymentOptions" class="col-lg-4 col-md-4 col-xs-12">-->
+                <!--<div class="contact-box" style="padding: 0px;">-->
+                    <!--<div class="col-sm-12 form-group text-center">-->
+                        <!--<h2>-->
+                            <!--<span ng-if="vm.language === 'en_US'" style="color: {{option.color}};"><i class="fa fa-usd"></i> <b>{{option.price}}</b></span>-->
+                            <!--<span ng-if="vm.language === 'ru_RU'" style="color: {{option.color}};"><i class="fa fa-rouble"></i> <b>{{option.price}}</b></span>-->
+                        <!--</h2>-->
+                        <!--<h2>-->
+                            <!--<span>{{option.duration.text}}</span>-->
+                        <!--</h2>-->
+                        <!--<hr style="margin: 10px 0px;">-->
+
+                        <!--<h2 style="color: {{option.color}};">-->
+                            <!--<strong><i class="fa fa-star-o"></i></strong>-->
+                        <!--</h2>-->
+                        <!--<p>{{option.description}}</p>-->
+
+                        <!--<hr style="margin: 10px 0px;">-->
+                        <!---->
+                        <!--<p>-->
+                            <!--<a class="btn btn-primary btn-outline" ng-click="vm.pay('paypal', option.duration.value)">-->
+                                <!--<i class="fa fa-paypal"></i> PayPal-->
+                            <!--</a>-->
+                        <!--</p>-->
+                    <!--</div>-->
+                    <!--<div class="clearfix"></div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

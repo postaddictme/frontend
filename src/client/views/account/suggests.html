@@ -1,0 +1,86 @@
+<!--<page-heading title="{{'SUGGESTED_POSTS_LONG' | translate}}"></page-heading>-->
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!--&lt;!&ndash; If account is not verified yet or rejected &ndash;&gt;-->
+    <!--<div class="row" ng-show="account.isVerified == 0 || account.isVerified == 2">-->
+        <!--<div class="col-lg-12">-->
+            <!--<div class="wrapper wrapper-content">-->
+                <!--<div class="text-center">-->
+                    <!--<h3 class="font-bold" ng-show="account.isVerified === 0">{{'DASH_ACCOUNTS_ACCOUNT_NOT_VERIFIED' | translate}}</h3>-->
+                    <!--<h3 class="font-bold" ng-show="account.isVerified === 2">{{'DASH_ACCOUNTS_ACCOUNT_REJECTED' | translate}}</h3>-->
+                    <!--<div class="error-desc" ng-show="account.isVerified === 2">-->
+                        <!--{{'DASH_ACCOUNTS_ACCOUNT_REJECTED_ADVICE' | translate}}-->
+                    <!--</div>-->
+                    <!--<br>-->
+                    <!--<div class="col-md-4 col-md-offset-4">-->
+                        <!--<account-card account="account" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></account-card>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash; If account is verified and must pay &ndash;&gt;-->
+    <!--<div class="row" ng-show="account.isVerified === 1 && account.shouldPay === 2">-->
+        <!--<div class="col-lg-12">-->
+            <!--<div class="wrapper wrapper-content">-->
+                <!--<div class="text-center">-->
+                    <!--<br>-->
+                    <!--<div class="col-md-4 col-md-offset-4">-->
+                        <!--<account-card account="account" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></account-card>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<br>-->
+
+    <!-- If account is verified and mustn't pay -->
+    <div ng-show="account.isVerified === 1 && (account.shouldPay === 0 || account.shouldPay === 1)">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+
+                <!--<div class="col-md-4 col-sm-4">-->
+                    <!--<account-card account="account" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></account-card>-->
+                <!--</div>-->
+
+                <!--<div class="col-md-4 col-sm-4" id="spinnerDiv">-->
+                    <!--<add-post-card add-new-post="vm.addNewPost" show-choose-methods="vm.showChooseMethods" upload-by-url="vm.uploadByUrl" on-file-select="vm.onFileSelect"-->
+                                   <!--uploading-from-url="vm.uploadingFromUrl" uploading-from-storage="vm.uploadingFromStorage"-->
+                                   <!--upload-from-url-button-text="vm.uploadFromUrlButtonText" upload-from-storage-button-text="vm.uploadFromStorageButtonText"-->
+                                   <!--uploading="vm.uploading" obj="obj"></add-post-card>-->
+                <!--</div>-->
+
+                <div class="col-md-4 col-sm-4">
+                    <suggests-card></suggests-card>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" ng-show="vm.showPagination">
+            <div class="col-md-12 text-center">
+                <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAccountMediaByPage"></pagination-card>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 20px;">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="futureMedia in accountMedia">
+                    <post-card future-media="futureMedia" edit-post="vm.editPost" repeat-post="vm.repeatPost" confirm-cancel-post="vm.confirmCancelPost" cancel-post="vm.cancelPost" confirm-delete-post="vm.confirmDeletePost" delete-post="vm.deletePost"></post-card>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Pagination -->
+<div style="  left: 0;
+              position: absolute;
+              right: 0;">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAccountMediaByPage"></pagination-card>
+        </div>
+    </div>
+</div>

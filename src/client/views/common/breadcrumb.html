@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+    <li ng-repeat="step in steps" ng-class="{'text-navy': $last}" ng-switch="!!step.sref">
+        <a ng-switch-when="true" ui-sref="{{step.sref}}" ng-bind-html="step.name"></a>
+        <a ng-switch-when="false" ng-if="!!step.href" href="{{step.href}}" ng-bind-html="step.name"></a>
+        <span ng-switch-when="false" ng-if="!step.href" ng-bind-html="step.name"></span>
+    </li>
+</ol>

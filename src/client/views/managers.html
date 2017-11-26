@@ -1,0 +1,25 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-md-8">
+        <!--<h2>{{'NAV_MANAGERS' | translate}}</h2>-->
+        <breadcrumb steps="breadcrumbSteps"></breadcrumb>
+    </div>
+    <div class="col-md-4">
+        <div class="title-action">
+            <a class="btn btn-xs btn-outline btn-success" ui-sref="dashboard.add-manager">{{'DASH_MANAGERS_INVITE_MANAGER' | translate}}</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <div class="row"></div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-3" ng-repeat-start="manager in vm.managers">
+                <manager-card manager="manager" user-info="vm.userInfo" confirm-delete-manager="vm.confirmDeleteManager" delete-manager="vm.deleteManager"></manager-card>
+            </div>
+            <div class="clearfix" ng-if="($index+1)%4==0"></div>
+            <div ng-repeat-end=""></div>
+        </div>
+    </div>
+</div>

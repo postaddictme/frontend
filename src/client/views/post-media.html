@@ -1,0 +1,118 @@
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1" id="myModal">
+
+            <div ng-show="fileType == 0" class="form-group">
+                <div>
+                    <img id="blah" ng-src="{{localMediaUrl}}" class="new-post-media" alt="post">
+                    <!--<img id="blah" ng-src="{{localMediaUrl}}" ng-click="vm.tag($event)" class="new-post-media" alt="post">-->
+                </div>
+            </div>
+
+            <div ng-show="fileType == 1" class="form-group">
+                <video controls>
+                    <source ng-src="{{localMediaUrl | trustUrl}}">
+                </video>
+            </div>
+            <div id="log"></div>
+        </div>
+    </div>
+
+    <br ng-show="showCaption">
+
+    <div class="col-md-6 col-md-offset-3" ng-show="!showCaption">
+        <hr>
+    </div>
+
+    <div class="row" style="padding-left: 15px; padding-right: 15px;">
+        <div class="col-md-8 col-md-offset-2" ng-show="isFirstPost">
+            <div class="alert alert-success">
+                <a class="alert-link" href="#">{{'IMPORTANT' | translate}}</a>
+                {{'DASH_ACCOUNT_POST_MEDIA_NOTIFICATION_FIRST_PUBLICATION' | translate}}
+            </div>
+        </div>
+
+        <div class="form-group" id="caption" ng-show="showCaption">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <textarea ng-model="newInput" class="_twemoji_input" rows="7"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-9 col-xs-9 input-group" style="padding-left: 0px; float: left;">
+                    <div class="col-md-2 col-xs-2 input-group" style="padding-right: 6px; float: left;">
+                        <div class="btn-group" role="group" aria-label="..."
+                             uib-tooltip-placement="top" uib-tooltip="{{enqueueButtonTooltip}}">
+                            <a type="button"
+                               ng-class="{'btn btn-sm btn-success pull-right' : !vm.sending, 'btn btn-sm btn-success pull-right disabled' : vm.sending}"
+                               ng-click="vm.send(false)" id="post-button-text">{{vm.enqueueButtonText}}</a>
+                        </div>
+                    </div>
+
+                    <input class="col-md-5 col-xs-5" ng-model="post.publishDate" id="datepicker" readonly="readonly"
+                           style="float:left; width: 80px; height: 30px; background-color: #ffffff; background-image: none; border: 1px solid #e5e6e7; border-radius: 1px; color: inherit; display: block; padding: 6px 5px; transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s; z-index: 100000;">
+                    <input class="col-md-1 col-xs-1" readonly="readonly"
+                           style="width: 14px; float:left; background-color: inherit; text-align: center; background-image: none; border: 0px; border-radius: 0px; color: inherit; display: block; padding: 6px 0px;"
+                           value="{{'AT' | translate}}">
+                    <input class="col-md-4 col-xs-4" type="text" id="hourminute" class="form-control"
+                           style="float:left; display: inline-block; background-color: #ffffff; width: 45px; height: 30px; z-index: 0; padding-right: 3px; padding-left: 5px;"
+                           data-mask="99:99" placeholder="" ng-model="post.hourminute" maxlength="5" size="5">
+                </div>
+                <div class="col-md-3 col-xs-3" style="padding-left: 0px; padding-right: 0px;">
+                    <div class="btn-group" role="group" aria-label="..." style="float: right;"
+                         uib-tooltip-placement="top" uib-tooltip="{{postNowButtonTooltip}}">
+                        <a type="button"
+                           ng-class="{'btn btn-sm btn-primary' : !vm.sending, 'btn btn-sm btn-primary disabled' : vm.sending}"
+                           ng-click="vm.send(true)" id="post-now-button-text">{{vm.postNowButtonText}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2" style="white-space:nowrap;">
+                <div class="col-md-6 col-xs-6" style="padding-left: 0px;">
+                    <div class="checkbox" style="padding-left: 0px; margin-bottom: 0px !important; margin-top: 0px !important;">
+                        <div class="checkbox checkbox-danger">
+                            <input id="delete-checkbox" type="checkbox" ng-model="vm.deleteScheduleVisible">
+                            <label for="delete-checkbox">
+                                <span>
+                                    {{'DASH_ACCOUNT_POST_MEDIA_DELETE' | translate}}
+                                </span>
+                            </label>
+
+                            <div ng-show="vm.deleteScheduleVisible" style="display: inline-block; vertical-align: top;">
+                                {{'AFTER' | translate}}
+                                <input type="text" class="form-control"
+                                       style="display: inline-block; background-color: #ffffff; width: 47px; height: 30px; z-index: 0; padding-right: 5px; padding-left: 5px; margin-top: -5px;"
+                                       data-mask="99:99" placeholder="" ng-model="vm.deleteAfter" maxlength="5" size="5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6 input-group">
+                    <div style="margin-top: 6px;">
+                        <button type="button" class="btn btn-sm btn-white pull-right" ng-click="vm.cancel()">
+                            {{'DASH_ACCOUNT_POST_MEDIA_CANCEL_BUTTON' | translate}}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker({
+            showAnim: "fade",
+            dateFormat: "dd/mm/yy",
+            minDate: 0
+        });
+    });
+</script>

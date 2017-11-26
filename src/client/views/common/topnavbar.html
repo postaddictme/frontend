@@ -1,0 +1,74 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <span minimaliza-sidebar></span>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <!--Notifications-->
+            <li class="dropdown" dropdown="" ng-show="notifications > 0">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-bell"></i> <span class="label label-danger">{{notifications}}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-messages" role="menu">
+                    <div ng-repeat="account in accounts" ng-show="(account.shouldPay !== 0) && (account.isVerified === 1)" ui-sref=".pay({accountId: account.id})" style="cursor: pointer;">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="pull-left">
+                                    <img alt="{{account.username}}" class="img-circle" ng-src="{{account.profilePicture}}" fallback-src="images/empty-profile-image.png">
+                                </a>
+
+                                <div>
+                                    <strong class="text-navy">{{'TOP_NAV_BAR_PURCHASE' | translate}}</strong> {{'TOP_NAV_BAR_FOR_ACCOUNT' | translate}}
+                                    <i class="fa fa-instagram pull-right"></i>
+                                    <br>
+                                    <strong>@{{account.username}}</strong>
+                                    <!--<br>-->
+                                    <!--<small class="text-navy" style="cursor: pointer; font-size: 11px; font-weight: 600;" ui-sref=""></small>-->
+                                    <br>
+                                    <small class="text-muted">{{'TOP_NAV_BAR_EXPIRES' | translate}}</small>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li class="divider" ng-hide="$last" style="margin-left: 10px;"></li>
+                    </div>
+                </ul>
+            </li>
+            <!--News-->
+            <li class="dropdown" dropdown="">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href dropdown-toggle aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-envelope"></i> <span class="label label-primary">1</span>
+                </a>
+                <ul class="dropdown-menu dropdown-messages" role="menu">
+                    <div ui-sref=".news" style="cursor: pointer;">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a class="pull-left">
+                                    <img alt="Postaddict" class="img-circle" src="images/postaddict-logo-round-180.png">
+                                </a>
+
+                                <div class="media-body">
+                                    <strong class="text-navy">{{"GREAT_NEWS" | translate}}</strong> {{"FROM" | translate}} <strong>{{"POSTADDICT_TEAM_FROM" | translate}}</strong>!
+                                    <br>
+                                    <small class="text-muted">{{newsDate}}</small>
+                                    <!--<br>-->
+                                    <!--<small class="text-navy" style="cursor: pointer; font-size: 11px; font-weight: 600;" ui-sref=".pay({accountId: account.id})">{{'TOP_NAV_BAR_PURCHASE' | translate}}</small>-->
+                                </div>
+
+                            </div>
+                        </li>
+                        <!--<li class="divider"></li>-->
+                    </div>
+                </ul>
+            </li>
+
+            <li>
+                <a href="" ng-click="vm.logout()">
+                    <i class="fa fa-sign-out"></i> {{'LOGOUT' | translate}}
+                </a>
+            </li>
+        </ul>
+
+
+    </nav>
+</div>

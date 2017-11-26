@@ -1,0 +1,88 @@
+<!--<page-heading title="{{'NAV_ADD_ACCOUNT' | translate}}"></page-heading>-->
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+
+            <div class="ibox float-e-margins">
+
+                <div ng-class="{'col-md-3 col-md-offset-3': !(vm.pinterest||vm.instagram), 'col-md-8 col-md-offset-2': vm.instagram}" ng-hide="vm.pinterest">
+                    <div class="contact-box" style="padding: 0px;">
+                        <div class="form-group text-center" ng-class="{'col-sm-12 ': !(vm.pinterest||vm.instagram), 'col-sm-6': vm.instagram}">
+
+                            <img src="images/instagram.png" alt="Instagram" style="width: 50px; height: auto; padding-top: 20px;">
+
+                            <h2>
+                                <span class="ng-binding">Instagram</span>
+                            </h2>
+
+                            <hr style="margin: 10px 0px;" ng-hide="vm.instagram">
+
+                            <p ng-hide="vm.instagram">
+                                <a class="btn btn-primary btn-outline" ng-click="vm.instagram = true">
+                                    {{'CHOOSE' | translate}}
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="col-sm-6" ng-show="vm.instagram" style="padding-top: 20px;">
+                            <div class="form-horizontal">
+
+                                <form name="addAccountForm" class="form-horizontal" style="padding-left: 5px;">
+                                    <div class="form-group" style="width: 90%;">
+                                        <input type="text" id="username" ng-model="vm.username" name="username" class="form-control" required placeholder="{{'DASH_ADD_ACCOUNT_INPUT_USERNAME_PLACEHOLDER' | translate}}">
+                                    </div>
+                                    <div class="form-group" style="width: 90%;" >
+                                        <input type="password" id="password" ng-model="vm.password" name="password" class="form-control" required placeholder="{{'DASH_ADD_ACCOUNT_INPUT_PASSWORD_PLACEHOLDER' | translate}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12" style="padding-left: 0;">
+                                            <button ng-class="{'btn btn-primary btn-sm' : !vm.sending, 'btn btn-primary btn-sm disabled' : vm.sending}" ng-click="vm.addAccount('instagram')">{{'DASH_ADD_ACCOUNT_BUTTON' | translate}}</button>
+                                            <button class="btn btn-sm" ng-click="vm.instagram = false">{{'CANCEL' | translate}}</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+
+                <div ng-class="{'col-md-3': !(vm.pinterest||vm.instagram), 'col-md-8 col-md-offset-2': vm.pinterest}" ng-hide="vm.instagram">
+                    <div class="contact-box" style="padding: 0px;">
+                        <div class="form-group text-center col-sm-12">
+
+                            <img src="images/pinterest.png" alt="Pinterest" style="width: 50px; height: auto; padding-top: 20px;">
+
+                            <h2>
+                                <span class="ng-binding">Pinterest</span>
+                            </h2>
+
+                            <hr style="margin: 10px 0px;" ng-hide="vm.pinterest">
+
+                            <p ng-hide="vm.pinterest">
+                                <a class="btn btn-primary btn-outline" ng-click="vm.addAccount('pinterest')">
+                                    {{'CHOOSE' | translate}}
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#password').showPassword('focus', {
+        toggle: { className: 'my-toggle' }
+    });
+</script>

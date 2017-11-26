@@ -1,0 +1,19 @@
+<div class="ngdialog-message">
+
+    <ui-select ng-model="person.selected" theme="bootstrap">
+        <ui-select-match placeholder="Enter username...">{{$select.selected.username}}</ui-select-match>
+        <ui-select-choices repeat="item in people | filter: $select.search"
+                           refresh="refreshPeople($select.search)"
+                           refresh-delay="0">
+            <div style="display: inline-block;"><img ng-src="{{item.profile_picture}}" class="img-circle" style="width: 30px; height: 30px;"></div>
+            <div ng-bind-html="item.username | highlight: $select.search" style="display: inline-block;"></div>
+            <!--<small ng-bind-html="item.username | highlight: $select.search"></small>-->
+        </ui-select-choices>
+    </ui-select>
+
+</div>
+<div class="ngdialog-buttons">
+    <button type="button" class="btn btn-sm btn-outline btn-primary" ng-click="confirm(person.selected.username)">{{"YES_I_AM_SURE" | translate}}</button>
+    <button type="button" class="btn btn-sm btn-outline btn-danger" ng-click="confirm('#remove')">{{"CLEAR_ALL" | translate}}</button>
+    <!--<button type="button" class="btn btn-sm btn-outline btn-danger" ng-click="closeThisDialog('button')">{{"CLEAR_ALL" | translate}}</button>-->
+</div>

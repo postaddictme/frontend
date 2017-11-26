@@ -1,0 +1,34 @@
+<!--
+    Suggested Post Card
+-->
+<div class="ibox float-e-margins">
+    <div class="ibox-title text-center">
+        <span ng-if="media.publishDate">
+            {{postDate(media.publishDate)}}</span>
+        <div class="ibox-tools" style="float: right;">
+            <a ng-click="editPost(media.id)" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'APPROVE' | translate}}" class="fa fa-pencil"></i></a>
+            <a ng-click="confirmRejectPost(media.id)" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'REJECT' | translate}}" class="fa fa-times"></i></a>
+        </div>
+
+    </div>
+    <div class="photo-grid">
+        <div class="ibox-content no-padding border-left-right pa-card-media-holder" style="max-width: 100%;">
+            <figure ng-show="media.type === 0">
+                <img alt="image" class="img-responsive pa-card-media pa-card-image" ng-src="{{media.thumbnailUrl}}">
+                <figcaption ng-if="media.caption !==''"><p><div ng-bind-html="media.caption"></div></p></figcaption>
+            </figure>
+            <div ng-show="media.type === 1">
+                <video controls="play" class="pa-card-media">
+                    <source ng-src="{{media.thumbnailUrl}}">
+                </video>
+            </div>
+        </div>
+        <div class="ibox-content profile-content">
+            <div class="text-center">
+                <div uib-tooltip-placement="top" uib-tooltip="{{media.account.username}}">
+                    <span class="label label-info">{{'SUGGESTED_POST' | translate}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

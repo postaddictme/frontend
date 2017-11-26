@@ -1,0 +1,53 @@
+<page-heading title="{{'PROMO_CODES' | translate}}" steps="breadcrumbSteps"></page-heading>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row" ng-hide="vm.currentPromoCode">
+        <div class="col-md-6 col-md-offset-3 col-xs-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content no-padding border-left-right">
+                        <div class="text-center">
+                            <div class="ibox-content ibox-heading" style="padding-bottom: 10px;">
+                                <h3 class="ng-binding">{{"GET_SOME_DISCOUNT" | translate}}!</h3>
+                            </div>
+
+                            <div class="ibox-content" style="padding-bottom: 15px;">
+                                <div class="form-horizontal">
+                                    <form name="changePasswordForm" class="form-horizontal">
+                                        <div class="input-group">
+                                            <input type="text" ng-model="vm.promoCode" id="promoCode" name="promoCode" class="form-control" required placeholder="{{'ENTER_YOUR_PROMO_CODE' | translate}}">
+                                            <span class="input-group-btn">
+                                                <button ng-class="{'btn btn-primary' : !vm.sending, 'btn btn-primary disabled' : vm.sending}" ng-click="vm.usePromoCode()">{{"SEND" | translate}}</button>
+                                            </span>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </div>
+    </div>
+
+    <div class="row" ng-show="vm.currentPromoCode">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{{"CURRENT_PROMO_CODES" | translate}}</h5>
+                    <div class="ibox-tools">
+
+                    </div>
+                </div>
+                <div class="ibox-content ibox-heading">
+                    <h3 class="text-navy">{{vm.currentPromoCode.code}}
+                        <div class="stat-percent">-{{vm.currentPromoCode.discount}}%</div>
+                    </h3>
+                    <small><i class="fa fa-info-circle"></i> {{vm.currentPromoCode.description}}.</small>
+                    <br>
+                    <small class="ng-binding"><b>{{"EXPIRATION_DATE" | translate}}:</b> {{vm.currentPromoCode.expiredAtText}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

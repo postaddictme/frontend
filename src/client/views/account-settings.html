@@ -1,0 +1,128 @@
+<page-heading title="{{'ACCOUNT_SETTINGS' | translate}}" steps="breadcrumbSteps"></page-heading>
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
+            <div class="m-b-md">
+                <div class="row">
+                    <div class="col-xs-4 col-xs-offset-4 text-center">
+                        <a href="http://instagram.com/{{vm.account.username}}" target="blank">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" ng-src="{{vm.account.profilePicture}}" fallback-src="images/empty-profile-image.png" style="margin-left: auto; margin-right: auto;">
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row text-center">
+
+                    <a ui-sref="dashboard.account.wall({accountId: vm.account.id})" class="btn-link">
+                        @{{vm.account.username}}
+                    </a>
+
+                    <hr style="margin-top: 5px; margin-bottom: 5px;">
+                    <p class="text-muted" ng-show="vm.account.isVerified === 0">{{'DASH_ACCOUNTS_PENDING_VERIFICATION' | translate}}</p>
+                    <p class="text-muted" ng-show="vm.account.isVerified === 1 && vm.account.shouldPay != 2">{{'DASH_ACCOUNTS_ACTIVE' | translate}}: {{vm.account.activeUntilWord}}</p>
+                    <p class="text-muted" ng-show="vm.account.isVerified === 1 && vm.account.shouldPay == 2">{{'DASH_ACCOUNTS_PAYMENT_IS_REQUIRED' | translate}}</p>
+                    <p class="text-muted" ng-show="vm.account.isVerified === 2">{{'DASH_ACCOUNTS_ACCOUNT_REJECTED' | translate}}</p>
+
+                    <a ng-hide="vm.account.isVerified === 0 || vm.account.isVerified === 2 || (vm.account.isVerified === 1 && vm.account.shouldPay === 0)" class="btn btn-w-m btn-sm btn-primary" ui-sref="dashboard.pay({accountId: vm.account.id})" style='color: white;'>
+                        {{'DASH_ACCOUNT_SETTINGS_PURCHASE' | translate}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="wrapper wrapper-content">
+                <div class="text-center">
+                    <h3 class="font-bold">{{'DASH_ACCOUNT_SETTINGS_H_PASSWORD' | translate}}</h3>
+
+                    <div class="error-desc">
+                        <p ng-hide="vm.checked" class="error-desc">{{'DASH_ACCOUNT_SETTINGS_P_1_PASSWORD' | translate}}</p>
+                        <p ng-show="vm.checked" class="error-desc">{{'DASH_ACCOUNT_SETTINGS_P_2_PASSWORD' | translate}} @{{vm.account.username}}</p>
+                    </div>
+                </div>
+
+                <div class="form-horizontal" ng-hide="vm.checked">
+                    <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                        <form name="changePasswordForm" class="form-horizontal">
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="{{vm.userInfo.email}}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="password" ng-model="vm.userPassword" id="userPassword" name="userPassword" class="form-control" required placeholder="{{'DASH_ACCOUNT_SETTINGS_USER_PASSWORD_PLACEHOLDER' | translate}}">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-2" style="padding-left: 0;">
+                                   <button ng-class="{'btn btn-primary' : !vm.sending, 'btn btn-primary disabled' : vm.sending}" ng-click="vm.checkPassword()">{{'DASH_ACCOUNT_SETTINGS_CHECK_BUTTON' | translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="form-horizontal" ng-if="vm.checked">
+                    <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                        <form name="changePasswordForm" class="form-horizontal">
+                            <div class="form-group">
+                                <input type="password" ng-model="vm.newPassword" ng-model-options="{debounce: vm.debounceValue}" id="newPassword" name="newPassword" class="form-control" required placeholder="{{'DASH_ACCOUNT_SETTINGS_NEW_PASSWORD_PLACEHOLDER' | translate}}">
+                                <password-strength-estimator password="{{vm.newPassword}}"></password-strength-estimator>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-lg-2" style="padding-left: 0;">
+                                   <button ng-class="{'btn btn-primary' : !vm.sending, 'btn btn-primary disabled' : vm.sending}" ng-click="vm.changePassword()">{{'DASH_ACCOUNT_SETTINGS_SAVE_BUTTON' | translate}}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row" ng-show="vm.account.isVerified == 1 && vm.account.shouldPay != 2 && vm.account.canUseSuggest == 1">
+        <div class="col-md-12 col-xs-12">
+            <br>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                    <div class="text-center">
+                        <label class="col-md-8 col-xs-8"><h3 class="font-bold" style="margin-top: 12px !important;">{{"SUGGESTED_POSTS_LONG" | translate}}</h3></label>
+
+                        <div class="col-md-3 col-xs-3">
+                            <input type="checkbox" ng-class="{'js-switch': !vm.sending, 'js-switch disabled': vm.sending}" ui-switch="{color:'#1AB394'}" ng-model="vm.suggestStatus" ng-change="vm.changeSuggestStatus(vm.suggestStatus)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" ng-show="vm.account.suggestStatus == 1">
+                <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+                    <div tooltip-placement="top" tooltip="Share this link to let other people suggest you posts">
+                        <input id="linkToCopy" type="text" class="form-control" ng-model="vm.linkToCopy" readonly>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $('#userPassword').showPassword('focus', {
+        toggle: { className: 'my-toggle' }
+    });
+    $('#newPassword').showPassword('focus', {
+        toggle: { className: 'my-toggle' }
+    });
+    $("#linkToCopy").click(function (event) {
+        event.preventDefault();
+        $(this).select();
+    });
+</script>

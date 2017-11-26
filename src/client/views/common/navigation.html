@@ -1,0 +1,59 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul ng-controller="NavigationController as vm" side-navigation class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="dropdown profile-element">
+
+                    <a class="dropdown-toggle" href>
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">{{vm.userInfo.email | limitTo: 18}}
+                                    <span ng-if="vm.userInfo.email.length > 18">...</span></strong>
+                            </span>
+                            <span ng-if="vm.userInfo.role === 1" class="text-muted text-xs block">{{'ROLE_ADMINISTRATOR' | translate}}</span>
+                            <span ng-if="vm.userInfo.role === 0" class="text-muted text-xs block">{{'ROLE_MANAGER' | translate}}</span>
+
+                            <!--<span class="text-muted text-xs block">{{'MANAGERS_LIMIT' | translate}}: {{managers.length}}</span>-->
+                            <!--<span class="text-muted text-xs block">{{'ACCOUNTS_LIMIT' | translate}}: {{accounts.length}}</span>-->
+                        </span>
+                    </a>
+                </div>
+                <div class="logo-element" style="padding: 12px 0px;">
+                    <!--<small>Post<br>addict</small>-->
+
+                    <img alt="image" class="img-circle" src="images/postaddict-logo-round-180.png" style="width: 36px; height: auto;">
+                </div>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".accounts"><i class="fa fa-user-circle-o fa-fw"></i>
+                    <span class="nav-label">{{'NAV_ACCOUNTS' | translate}} </span>
+                    <span class="label label-primary pull-right">{{accounts.length}}</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".managers"><i class="fa fa-users fa-fw"></i>
+                    <span class="nav-label">{{'NAV_MANAGERS' | translate}} </span>
+                    <span class="label label-primary pull-right">{{managers.length}}</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".settings"><i class="fa fa-wrench fa-fw"></i> <span class="nav-label">{{'NAV_SETTINGS' | translate}}</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".promo-code">
+                    <i class="fa fa-bolt fa-fw"></i>
+                    <span class="nav-label">{{"PROMO_CODES" | translate}}</span>
+                </a>
+            </li>
+            <li ng-if="vm.userInfo.isAffiliate === 1" ui-sref-active="active">
+                <a ui-sref=".partner-program"><i class="fa fa-handshake-o fa-fw"></i> <span class="nav-label">{{"PARTNER_PROGRAM" | translate}}</span></a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref=".support"><i class="fa fa-shield fa-fw"></i> <span
+                        class="nav-label">{{'NAV_SUPPORT' | translate}}</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

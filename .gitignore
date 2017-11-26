@@ -1,0 +1,14 @@
+node_modules
+bower_components
+
+node_modules.log
+npm-debug.log
+
+package-lock.json
+
+build
+
+InstagramPosting/
+
+.idea/
+.tmp/

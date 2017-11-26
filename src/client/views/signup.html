@@ -1,0 +1,51 @@
+<div class="middle-box text-center loginscreen   animated fadeIn"  style="padding-top: 80px; position: relative; margin-top: 10px;">
+    <div style="padding-bottom: 10px;">
+        <a href="../">
+            <img alt="Postaddict" class="img-circle" src="images/postaddict-logo-round-180.png" style="width: 64px; height: auto;">
+        </a>
+    </div>
+    <div>
+        <h2>{{'SIGNUP_H' | translate}}</h2>
+        <p>{{'SIGNUP_P_1' | translate}}</p>
+        <form class="m-t" role="form" ng-submit="vm.signup()">
+            <div class="form-group">
+                <input type="email" ng-model="vm.email" name="email" id="email" class="form-control" placeholder="{{'SIGNUP_INPUT_EMAIL_PLACEHOLDER' | translate}}" required>
+            </div>
+            <div class="signup">
+            <!--<div class="form-group">-->
+                <!--<input type="password" ng-model="vm.password" name="password" class="form-control" placeholder="{{'SIGNUP_INPUT_PASSWORD_PLACEHOLDER' | translate}}" required>-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+                <!--<input type="password" ng-model="vm.passwordCheck" name="passwordCheck" class="form-control" placeholder="{{'SIGNUP_INPUT_REPEAT_PASSWORD_PLACEHOLDER' | translate}}" required>-->
+            <!--</div>-->
+            <div class="signup">
+            <!--<p style="color: white;">{{'SIGNUP_P_2' | translate}}</p>-->
+            <!--<div class="form-group">-->
+                <!--<select style="width: 100%;" chosen class="chosen-select" data-placeholder="{{'SIGNUP_INPUT_COUNTRY_PLACEHOLDER' | translate}}" allow-single-deselect="false" tabindex="4" ng-model="vm.country" ng-options="co.name for co in vm.countries">-->
+                <!--<option value=""></option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<div class="signup" class="form-group" ng-show="vm.chooseCity">-->
+                <!--<select style="width: 100%;" chosen class="chosen-select" data-placeholder="{{'SIGNUP_INPUT_CITY_PLACEHOLDER' | translate}}" allow-single-deselect="false" tabindex="4" ng-model="vm.city" ng-options="ci.name for ci in vm.country.cities">-->
+                <!--<option value=""></option>-->
+                <!--</select>-->
+            <!--</div>-->
+            <!--<br>-->
+            <button type="submit" ng-class="{'btn btn-primary block full-width m-b signup' : !vm.sending, 'btn btn-primary block full-width m-b signup disabled' : vm.sending}">{{'SIGNUP_BUTTON' | translate}}</button>
+            </div>
+            </div>
+            <!--<p class="text-muted text-center"><small>Already have an account?</small></p>-->
+            <a class="btn btn-sm btn-white btn-block" ui-sref="login">{{'SIGNUP_LOGIN_BUTTON' | translate}}</a>
+        </form>
+        <!--<p class="m-t"> <small>Postaddict.me &copy; 2015</small> </p>-->
+    </div>
+
+    <hr/>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <b>Postaddict.me</b> © 2014 - 2017
+        </div>
+    </div>
+</div>
+

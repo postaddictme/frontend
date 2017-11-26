@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-sm-2">
+        <div data-toggle="buttons" class="btn-group">
+            <label class="btn btn-sm btn-white" ui-sref-active="active disabled"> <a ui-sref="dashboard.admin.accounts" type="checkbox" ng-click="vm.getAllAccountsByPage(1)"> Accounts </a> </label>
+            <label class="btn btn-sm btn-white" ui-sref-active="active disabled"> <a ui-sref="dashboard.admin.media" type="checkbox" ng-click="vm.getAllMediaByPage(1)"> Media </a> </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6 text-center">
+        <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAllMediaByPage"></pagination-card>
+    </div>
+    <div class="col-sm-6">
+        <div data-toggle="buttons" class="btn-group">
+            <label class="btn btn-xs btn-success"  ng-click="vm.setMediaStatusFilter(0)"> <input type="checkbox"> Scheduled </label>
+            <label class="btn btn-xs btn-info" ng-click="vm.setMediaStatusFilter(1)"> <input type="checkbox"> Publishing... </label>
+            <label class="btn btn-xs btn-primary" ng-click="vm.setMediaStatusFilter(2)"> <input type="checkbox"> Published </label>
+            <label class="btn btn-xs btn-danger" ng-click="vm.setMediaStatusFilter(3)"> <input type="checkbox"> Failed </label>
+            <label class="btn btn-xs btn-warning" ng-click="vm.setMediaStatusFilter(4)"> <input type="checkbox"> Unknown </label>
+            <label class="btn btn-xs btn-default" ng-click="vm.setMediaStatusFilter(5)"> <input type="checkbox"> Deleted </label>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div style="float: left;" ng-repeat-start="media in vm.futureMedia | filter:vm.mediaStatusFilter" class="col-md-3">
+        <post-card future-media="media" edit-post="editPost" cancel-post="cancelPost" delete-post="deletePost"></post-card>
+    </div>
+    <div class="clearfix" ng-if="($index+1)%4==0"></div>
+    <div ng-repeat-end=""></div>
+</div>
+
+<div style="  left: 0;
+              position: absolute;
+              right: 0;">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAllMediaByPage"></pagination-card>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="contact-box">
+    <div class="row text-center">
+        <p>{{manager.email}}</p>
+    </div>
+    <div class="row text-center" ng-show="userInfo.role === 1">
+        <hr style="margin-top: 5px; margin-bottom: 5px;">
+        <a class="btn btn-w-m btn-xs btn-default btn-outline" ng-click="confirmDeleteManager(manager.id)"
+           ng-if="manager.email !== userInfo.email">
+            {{'NAV_ACCOUNTS_TOOLTIP_DELETE' | translate}}
+        </a>
+        <span class="text-muted" ng-if="manager.email === userInfo.email">
+            {{'ROLE_ADMINISTRATOR' | translate}}
+        </span>
+    </div>
+    <div class="clearfix"></div>
+</div>
+

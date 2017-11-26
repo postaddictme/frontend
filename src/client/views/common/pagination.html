@@ -1,0 +1,15 @@
+<nav>
+    <ul ng-show="showPagination" class="pagination pagination-sm" style="margin: 0;">
+        <li ng-show="currentRange > 1" ng-class="{'disabled': currentPage === 1}"><a aria-label="Previous" ng-click="getByPage(1)"><span aria-hidden="true">«</span></a></li>
+        <li ng-show="currentRange > 1"><a aria-label="Previous" ng-click="getByPage(currentRange - 1)"><span aria-hidden="true">...</span></a></li>
+        <li ng-class="{'disabled': currentPage%5 === 1}"><a ng-click="getByPage(currentRange)" ng-class="{'activePagination': currentPage%5 === 1}">{{currentRange}}</a></li>
+        <li ng-class="{'disabled': currentPage%5 === 2}" ng-hide="currentRange + 1 > pages"><a ng-click="getByPage(currentRange + 1)" ng-class="{'activePagination': currentPage%5 === 2}">{{currentRange + 1}}</a></li>
+        <li ng-class="{'disabled': currentPage%5 === 3}" ng-hide="currentRange + 2 > pages"><a ng-click="getByPage(currentRange + 2)" ng-class="{'activePagination': currentPage%5 === 3}">{{currentRange + 2}}</a></li>
+        <li ng-class="{'disabled': currentPage%5 === 4}" ng-hide="currentRange + 3 > pages"><a ng-click="getByPage(currentRange + 3)" ng-class="{'activePagination': currentPage%5 === 4}">{{currentRange + 3}}</a></li>
+        <li ng-class="{'disabled': currentPage%5 === 0}" ng-hide="currentRange + 4 > pages"><a ng-click="getByPage(currentRange + 4)" ng-class="{'activePagination': currentPage%5 === 0}">{{currentRange + 4}}</a></li>
+        <li ng-show="currentRange + 5 <= pages"><a aria-label="Previous" ng-click="getByPage(currentRange + 5)"><span aria-hidden="true">...</span></a></li>
+        <li ng-show="currentRange + 5 <= pages" ng-class="{'disabled': currentPage === pages}"><a aria-label="Next" ng-click="getByPage(pages)"><span aria-hidden="true">»</span></a></li>
+    </ul>
+    <div class="row" style="height: 31px;" ng-hide="showPagination">
+    </div>
+</nav>

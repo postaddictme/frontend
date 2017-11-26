@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-sm-2">
+        <div data-toggle="buttons" class="btn-group">
+            <label class="btn btn-sm btn-white" ui-sref-active="active disabled"> <a ui-sref="dashboard.admin.accounts" type="checkbox" ng-click="vm.getAllAccountsByPage(1)"> Accounts </a> </label>
+            <label class="btn btn-sm btn-white" ui-sref-active="active disabled"> <a ui-sref="dashboard.admin.media" type="checkbox" ng-click="vm.getAllMediaByPage(1)"> Media </a> </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAllAccountsByPage"></pagination-card>
+                </div>
+                <div class="col-sm-2">
+                    <div data-toggle="buttons" class="btn-group">
+                        <label class="btn btn-sm btn-white" ng-click="vm.setAccountStatusFilter(0)"> <input type="checkbox"> <i class="fa fa-circle-o text-info"></i> </label>
+                        <label class="btn btn-sm btn-white" ng-click="vm.setAccountStatusFilter(1)"> <input type="checkbox"> <i class="fa fa-check text-navy"></i> </label>
+                        <label class="btn btn-sm btn-white" ng-click="vm.setAccountStatusFilter(2)"> <input type="checkbox"> <i class="fa fa-close text-danger"></i> </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="input-group"><input type="text" ng-model="search.username" placeholder="username" class="input-sm form-control"> <span class="input-group-btn">
+                        <button type="button" class="btn btn-sm btn-primary"> Search</button> </span></div>
+                </div>
+            </div>
+            <br>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+
+                        <th>#</th>
+                        <th>Account</th>
+                        <th class="text-center">Active</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Followers</th>
+                        <th class="text-center">Following</th>
+                        <th class="text-center">Posts</th>
+                        <th class="text-center">Suggests</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody> 
+                    <tr ng-repeat="account in vm.accounts | filter:search | filter:vm.accountStatusFilter">
+                        <td>{{$index+1+(vm.currentPage-1)*10}}</td>
+                        <td><a href="http://www.instagram.com/{{account.username}}" target="blank">{{account.username}}</a></td>
+                        <td class="text-center">
+                            <!--<a href="#" editable-date="account.activeUntil" onbeforesave="vm.prolongate(account.id, $data)">-->
+                                <!--{{ (account.activeUntil | date:"dd-MM-yyyy") || 'empty' }}-->
+                            <!--</a>-->
+
+                            <a href="#" editable-text="account.activeUntil" onbeforesave="vm.prolongate(account.id, $data)">{{ account.activeUntil || 'empty' }}</a>
+                        </td>
+                        <td class="text-center">{{account.admin.email}}</td>
+                        <td class="text-center">{{account.followedByCnt}}</td>
+                        <td class="text-center">{{account.followsCnt}}</td>
+                        <td class="text-center">{{account.mediaCnt}}</td>
+                        <td class="text-center">
+                            <i ng-show="account.canUseSuggest == 1" ng-click="vm.changeSuggestStatus(account.id, 0)" class="fa fa-check text-navy" style="cursor: pointer;"></i>
+                            <i ng-show="account.canUseSuggest == 0" ng-click="vm.changeSuggestStatus(account.id, 1)" class="fa fa-close text-danger" style="cursor: pointer;"></i>
+                        </td>
+                        <td class="text-center">
+                            <button type="button" class="btn btn-primary btn-xs" ng-hide="account.isVerified === 1" ng-click="vm.verifyAccount(1, account.instagramId, account.id)">Verify</button>
+                            <button type="button" class="btn btn-danger btn-xs" ng-hide="account.isVerified === 2" ng-click="vm.verifyAccount(2, account.instagramId, account.id)">Reject</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+    </div>
+</div>
+<div style=" left: 0;
+             position: absolute;
+             right: 0;">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <pagination-card show-pagination="vm.showPagination" pages="vm.pages" current-range="vm.currentRange" current-page="vm.currentPage" get-by-page="vm.getAllAccountsByPage"></pagination-card>
+        </div>
+    </div>
+</div>

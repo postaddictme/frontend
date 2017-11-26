@@ -1,0 +1,37 @@
+<div class="ibox float-e-margins">
+    <div class="ibox-content no-padding border-left-right">
+        <div class="text-center">
+
+            <div class="ibox-content ibox-heading" style="padding-bottom: 10px;">
+                <h3 ng-if="!title">{{'DASH_ACCOUNTS_ADD_NEW_MEDIA_BUTTON' | translate}}</h3>
+                <h3 ng-if="title">{{title}}</h3>
+            </div>
+
+            <div class="ibox-content">
+                <div class="feed-activity-list">
+
+                    <div class="feed-element" style="border-bottom: none; padding-bottom: 0px;">
+                        <div ng-hide="uploadingFromUrl" class="ibox-content profile-content" >
+                            <button id="openModal" ng-class="{'btn btn-outline btn-primary btn-sm' : !uploading, 'btn btn-outline btn-primary btn-sm disabled' : uploading}"
+                                    ngf-pattern="{{patternFormats}}"
+                                    ngf-accept="{{acceptFormats}}"
+                                    ngf-select="upload($file)"
+                                    type="button">
+                                <i class="fa fa-laptop"></i>&nbsp;&nbsp;
+                                <span class="bold">{{uploadFromStorageButtonText}}</span>
+                            </button>
+                        </div>
+                        <div ng-hide="uploadingFromStorage || hideUploadByUrl" class="ibox-content profile-content" >
+                            <div class="form-group has-success">
+                                <input type="text" ng-disabled="uploading" class="form-control input-sm center-placeholder" ng-change="uploadByUrl()" ng-model-options="{debounce: 750}" placeholder="{{'DASH_ACCOUNTS_UPLOAD_FROM_URL_INPUT_PLACEHOLDER' | translate}}" ng-model="obj.url" style="font-size: 11px;">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

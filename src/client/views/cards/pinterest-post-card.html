@@ -1,0 +1,42 @@
+<!--
+    Pinterest Post Card
+-->
+<div class="ibox float-e-margins">
+    <div class="ibox-title text-center">
+        <span ng-if="media.publishDate">
+            {{media.formattedPublishDate}}</span>
+        <div class="ibox-tools" style="float: right;">
+            <a ng-click="editPost(media.id)" ng-show="media.isPublished === 0" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_EDIT' | translate}}" class="fa fa-pencil"></i></a>
+            <a href="{{media.pinterestPostUrl}}" target="blank" ng-show="media.isPublished === 2 && media.pinterestPostUrl !== null" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_SHOW_POST_IN_PINTEREST' | translate}}" class="fa fa-external-link-square"></i></a>
+            <a ng-click="confirmCancelPost(media.id)" ng-hide="media.isPublished === 2 && media.pinterestPostUrl !== null" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_DELETE' | translate}}" class="fa fa-times"></i></a>
+        </div>
+
+    </div>
+    <div class="photo-grid">
+        <div class="ibox-content no-padding border-left-right pa-card-media-holder" style="max-width: 100%;">
+            <figure ng-show="media.type === 0">
+                <img alt="image" class="img-responsive pa-card-media pa-card-image" ng-src="{{media.thumbnailUrl}}">
+                <figcaption ng-if="media.caption !==''"><p><div ng-bind-html="media.caption"></div></p></figcaption>
+            </figure>
+            <div ng-show="media.type === 1">
+                <video controls="play" class="pa-card-media">
+                    <source ng-src="{{media.thumbnailUrl}}">
+                </video>
+            </div>
+        </div>
+        <div class="ibox-content profile-content">
+            <div class="text-center">
+                <div uib-tooltip-placement="top" uib-tooltip="{{media.account.username}}">
+                    <span class="label label-success" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.SCHEDULED">{{'SCHEDULED' | translate}} </span>
+                    <span class="label label-primary" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.PUBLISHED">{{'PUBLISHED' | translate}}</span>
+                    <span class="label" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.FAILED">{{'FAILED' | translate}}</span>
+                    <span class="label label-warning" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.UNKNOWN">{{'UNKNOWN' | translate}}</span>
+                    <span class="label label-warning" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.DELETED">{{'DELETED' | translate}}</span>
+                    <span class="label label-danger" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.DELETED_FROM_PINTEREST">{{'DELETED_FROM_PINTEREST' | translate}}</span>
+                    <span class="label  label-success" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.SCHEDULED_TO_DELETE_FROM_PINTEREST">{{'SCHEDULED_TO_DELETE_FROM_PINTEREST' | translate}}</span>
+                    <span class="label" ng-show="(media.isPublished) === PINTEREST_POST_STATUS.FAILED_TO_DELETE_FROM_PINTEREST">{{'FAILED_TO_DELETE_FROM_PINTEREST' | translate}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

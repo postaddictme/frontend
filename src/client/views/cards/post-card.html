@@ -1,0 +1,47 @@
+<!--
+    Post Card
+-->
+<div class="ibox float-e-margins">
+    <div class="ibox-title text-center">
+        <span ng-show="futureMedia.publishDate">
+            {{futureMedia.formattedPublishDate}}</span>
+        <div class="ibox-tools" style="float: right;">
+            <a ng-click="editPost(futureMedia.id)" ng-show="futureMedia.isPublished === 0" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_EDIT' | translate}}" class="fa fa-pencil"></i></a>
+            <a href="{{futureMedia.instagramMediaUrl}}" target="blank" ng-show="futureMedia.isPublished === 2 && futureMedia.instagramMediaUrl !== null" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_SHOW_POST_IN_INSTAGRAM' | translate}}" class="fa fa-external-link-square"></i></a>
+            <a ng-click="repeatPost(futureMedia.id)" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_POST_AGAIN' | translate}}" class="fa fa-circle-o"></i></a>
+            <a ng-click="confirmCancelPost(futureMedia.id)" ng-hide="futureMedia.isPublished === 2 && futureMedia.instagramMediaUrl !== null" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_DELETE' | translate}}" class="fa fa-times"></i></a>
+            <a ng-click="confirmDeletePost(futureMedia.id)" ng-show="futureMedia.isPublished === 2 && futureMedia.instagramMediaUrl !== null" style="margin-left: 1px;"><i uib-tooltip-placement="top" uib-tooltip="{{'DASH_ACCOUNTS_TOOLTIP_DELETE_FROM_INSTAGRAM' | translate}}" class="fa fa-times"></i></a>
+        </div>
+
+    </div>
+    <div class="photo-grid">
+        <div class="ibox-content no-padding border-left-right pa-card-media-holder" style="max-width: 100%;">
+            <figure ng-show="futureMedia.type === 0">
+                <img alt="image" class="pa-card-media pa-card-image" ng-src="{{futureMedia.thumbnailUrl}}">
+                <figcaption ng-if="futureMedia.caption !==''"><p><div ng-bind-html="futureMedia.caption"></div></p></figcaption>
+            </figure>
+            <div ng-show="futureMedia.type === 1" class="pa-card-video-holder">
+                <video controls="play" class="pa-card-media">
+                    <source ng-src="{{futureMedia.thumbnailUrl}}">
+                </video>
+            </div>
+        </div>
+        <div class="ibox-content profile-content">
+            <div class="text-center">
+                <div uib-tooltip-placement="top" uib-tooltip="{{futureMedia.account.username}}">
+                    <span class="label label-success" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.SCHEDULED">{{'SCHEDULED' | translate}} </span>
+                    <span class="label label-info" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.PUBLISHING">{{'PUBLISHING' | translate}}</span>
+                    <span class="label label-primary" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.PUBLISHED">{{'PUBLISHED' | translate}}</span>
+                    <span class="label" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.FAILED">{{'FAILED' | translate}}</span>
+                    <span class="label label-warning" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.UNKNOWN">{{'UNKNOWN' | translate}}</span>
+                    <span class="label label-warning" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.DELETED">{{'DELETED' | translate}}</span>
+                    <span class="label label-danger" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.DELETED_FROM_INSTAGRAM">{{'DELETED_FROM_INSTAGRAM' | translate}}</span>
+                    <span class="label  label-info" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.DELETING_FROM_INSTAGRAM">{{'DELETING_FROM_INSTAGRAM' | translate}}</span>
+                    <span class="label  label-success" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.SCHEDULED_TO_DELETE_FROM_INSTAGRAM">{{'SCHEDULED_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+                    <span class="label" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.FAILED_TO_DELETE_FROM_INSTAGRAM">{{'FAILED_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+                    <span class="label  label-warning" ng-show="(futureMedia.isPublished) === INSTAGRAM_POST_STATUS.UNKNOWN_TO_DELETE_FROM_INSTAGRAM">{{'UNKNOWN_TO_DELETE_FROM_INSTAGRAM' | translate}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

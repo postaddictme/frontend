@@ -1,0 +1,30 @@
+<!--<page-heading title="{{'NAV_INVITE_MANAGER' | translate}}"></page-heading>-->
+
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <div class="wrapper wrapper-content">
+                <div class="text-center">
+                    <h3 class="font-bold">{{'DASH_INVITE_MANAGER_H' | translate}}</h3>
+                    <div class="error-desc">
+                       <p>{{'DASH_INVITE_MANAGER_P' | translate}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2">
+            <form name="addManagerForm" class="form-horizontal">
+
+                <div class="form-group">
+                    <input type="email" ng-model="vm.newManagerEmail" name="emailInput" required class="form-control" placeholder="{{'DASH_INVITE_MANAGER_INPUT_EMAIL_PLACEHOLDER' | translate}}">
+                </div>
+
+                <div class="form-group">
+                    <button ng-class="{'btn btn-primary btn-sm' : !vm.sending, 'btn btn-primary btn-sm disabled' : vm.sending}" ng-click="vm.addManager()">{{'DASH_INVITE_MANAGER_INVITE_BUTTON' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

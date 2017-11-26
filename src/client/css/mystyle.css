@@ -1,0 +1,511 @@
+.nav-header {
+    padding: 9px 25px 10px 25px;
+}
+
+.nav-second-level li a.navigationRemoveIcon {
+    float: right;
+    padding: 7px 7px 7px 0px;
+}
+
+.nav-second-level li span.navigationRemoveIcon {
+    float: right;
+    padding: 7px 7px 7px 7px;
+    margin-right: 7px;
+}
+
+.nav-second-level li a {
+    padding: 7px 10px 7px 30px;
+}
+
+body.mini-navbar .nav-header {
+    background-color: #2f4050;
+}
+
+/*For dropdown notifications fit in iPhone 6S*/
+ul.dropdown-menu.dropdown-messages {
+    width: 260px;
+}
+.navbar-top-links .dropdown-menu li a {
+    padding: 3px 15px;
+}
+.dropdown-messages, .dropdown-alerts {
+    padding: 10px 10px 10px 0px;
+}
+
+.breadcrumb {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+/*To fix li ng-repeat style issse*/
+.breadcrumb > li {
+    padding-right: 3px;
+}
+.breadcrumb > li + li:before {
+    padding: 0 2px 0 5px;
+}
+
+a:focus {
+    outline: none;
+}
+
+.emoji-menu-on-modal {
+    z-index: 1051;
+}
+
+.photo-grid img {
+    display: block;
+}
+
+.photo-grid div:hover img {  }
+
+.photo-grid figure {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.photo-grid div:hover figcaption {
+    opacity: 1;
+}
+
+.photo-grid div:hover figcaption p {
+	-moz-transform: translateY(40px);
+	-webkit-transform: translateY(40px);
+	transform: translateY(40px);
+}
+
+.photo-grid figcaption {
+    background: rgba(47, 64, 80, 0.8);
+    color: white;
+    display: table;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    transition: all 300ms;
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    transition-delay: 100ms;
+    z-index: 100;
+}
+
+img.emoji {
+   height: 16px;
+   width: 16px;
+   margin: 0 0.25em 0 0.25em;
+   vertical-align: baseline;
+   display: inline;
+}
+
+.fadein,
+.fadeout {
+  -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+}
+
+.fadein.ng-hide-remove,
+.fadeout.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+  display: inline-block !important;
+}
+
+.fadeout.ng-hide-add,
+.fadein.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+  display: inline-block !important;
+}
+
+.hideShowPassword-toggle {
+    background-image: url(../assets/wink.svg);
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    height: 100%;
+    overflow: hidden;
+    text-indent: -9999em;
+    width: 44px;
+    outline: none;
+}
+.hideShowPassword-toggle-hide {
+    background-position: -44px center;
+}
+
+.my-toggle:hover, .my-toggle:focus {
+    background-color: #eee;
+    color: #555;
+    outline: transparent;
+}
+
+.my-toggle {
+    background: transparent;
+    border: 0;
+    border-radius: 0.25em;
+    color: #888;
+    cursor: pointer;
+    font-size: 0.75em;
+    font-weight: bold;
+    margin-right: 0.5em;
+    padding: 0.5em;
+    text-transform: uppercase;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+body:not(.fixed-sidebar).mini-navbar .nav li:hover > .nav-second-level, .mini-navbar .nav li:focus > .nav-second-level {
+    min-width: 230px;
+}
+
+.dropdown-menu.dropdown-at-top {
+    top: -130%;
+}
+
+/* Animations for verification accounts list */
+.animate-enter {
+    -webkit-animation: enter 600ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    animation: enter 600ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+	display: block;
+    position: relative;
+}
+@-webkit-keyframes enter {
+	from {
+	    opacity: 0;
+    	height: 0px;
+    }
+    20% {
+		opacity: .5;
+    }
+    40% {
+		opacity: .15;
+		color: red;    	    }
+    60% {
+		opacity: .75;
+    }
+    80% {
+		opacity: .3;
+    }
+    to {
+        opacity: 1;
+    	height: 30px;
+    }
+}
+@keyframes enter {
+	from {
+	    opacity: 0;
+    	height: 0px;
+    }
+    20% {
+		opacity: .5;
+    }
+    40% {
+		opacity: .15;
+		color: red;    	    }
+    60% {
+		opacity: .75;
+    }
+    80% {
+		opacity: .3;
+    }
+    to {
+        opacity: 1;
+    	height: 30px;
+    }
+}
+
+.animate-leave {
+    -webkit-animation: leave 600ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+    animation: leave 600ms cubic-bezier(0.165, 0.840, 0.440, 1.000);
+	display: block;
+    position: relative;
+}
+@-webkit-keyframes leave {
+	to {
+	    opacity: 0;
+    	height: 0px;
+    }
+    80% {
+		opacity: .25;
+    }
+    60% {
+		opacity: .10;
+		color: red;    	    }
+    40% {
+		opacity: .5;
+    }
+    20% {
+		opacity: .30;
+    }
+    from {
+        opacity: 1;
+    	height: 30px;
+    }
+}
+@keyframes leave {
+	to {
+	    opacity: 0;
+    	height: 0px;
+    }
+    80% {
+		opacity: .25;
+    }
+    60% {
+		opacity: .10;
+		color: red;    	    }
+    40% {
+		opacity: .5;
+    }
+    20% {
+		opacity: .30;
+    }
+    from {
+        opacity: 1;
+    	height: 30px;
+    }
+}
+
+
+.signup.ng-hide-add         {
+  -webkit-animation:0.5s fadeOutLeft ease;
+  animation:0.5s fadeOutLeft ease;
+}
+/* when showing the thing */
+.signup.ng-hide-remove      {
+  -webkit-animation:0.5s fadeInRight ease;
+  animation:0.5s fadeInRight ease;
+}
+
+
+/* Special for login, singup and reset pages */
+.white-text {
+    color: white !important;
+}
+
+.activePagination {
+    color: #fff !important;
+    background-color: #428bca !important;
+    border-color: #428bca !important;
+}
+
+/* Pace spinner color */
+#loading-bar-spinner .spinner-icon {
+    border-top-color:  #1ab394;
+    border-left-color: #1ab394;
+}
+#loading-bar .bar {
+    background: #1ab394;
+}
+#loading-bar .peg {
+    -moz-box-shadow: #1ab394 1px 0 6px 1px;
+    -ms-box-shadow: #1ab394 1px 0 6px 1px;
+    -webkit-box-shadow: #1ab394 1px 0 6px 1px;
+    box-shadow: #1ab394 1px 0 6px 1px;
+}
+
+/* BugFix: font of russian statuses in firefox */
+.label {
+    font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+/* Fix page heading error */
+.page-heading {
+    padding: 8px 20px 8px !important;
+    margin-left: 0px;
+}
+
+/* For ngDialog */
+@-webkit-keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@keyframes ngdialog-flyin {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+        transform: translateY(-40px)
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0)
+    }
+}
+
+@-webkit-keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        transform: translateY(-40px)
+    }
+}
+
+@keyframes ngdialog-flyout {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-40px);
+        -ms-transform: translateY(-40px);
+        transform: translateY(-40px)
+    }
+}
+
+.ngdialog.ngdialog-theme-plain .ngdialog-content {
+    -webkit-animation: ngdialog-flyin .5s;
+    animation: ngdialog-flyin .5s;
+    font-family: "open sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+.ngdialog.ngdialog-theme-plain.ngdialog-closing .ngdialog-content {
+    -webkit-animation: ngdialog-flyout .5s;
+    animation: ngdialog-flyout .5s
+}
+.ngdialog-content {
+    background-color: #fff!important;
+    border-radius: 4px!important;
+    font-family: inherit!important;
+    font-size: inherit!important;
+    line-height: inherit!important;
+}
+
+
+ /* Header of navbar in suggest page */
+.postaddict-bg {
+    background-color: #2F4050;
+}
+.postaddict-bg .navbar-fixed-top, .postaddict-bg .navbar-static-top {
+    background: #2F4050;
+}
+.top-navigation .navbar-brand {
+    background: #2F4050;
+    color: #19B193;
+    padding: 15px 35px;
+}
+.top-navigation .navbar-right {
+    margin-right: 20px;
+}
+.top-navigation .nav > li > a {
+    padding: 15px 20px;
+    color: #999c9e;
+}
+
+
+ /* Inspinia-Notify modified */
+.cg-notify-message.inspinia-notify {
+    box-shadow: 0 0 3px #999;
+    color: white;
+    font-weight: 500;
+    opacity: 0.9;
+}
+.inspinia-notify.alert-warning {
+    background-color: #f8ac59;
+    border-left: none;
+}
+.inspinia-notify.alert-success {
+    background-color: #1ab394;
+    border-left: none;
+}
+.inspinia-notify.alert-danger {
+    background-color: #ed5565;
+    border-left: none;
+}
+.inspinia-notify.alert-info {
+    background-color: #23c6c8;
+    border-left: none;
+}
+
+
+ /* Boxed layout: background */
+body.boxed-layout {
+    /*background-image: url('../images/dark-stripes-light-1.png');*/
+    background-color: #fafafa;
+}
+
+
+ /* Emoji box popover's z-index: Fixes firefox bug */
+div._twemoji_popover {
+    z-index: 500 !important;
+}
+
+
+.taggd-wrapper .taggd-item-hover.show {
+    font-size: 15px;
+}
+
+
+/* Image in post media page */
+img.new-post-media {
+    height: auto;
+    width: 100%;
+}
+
+/* Image in board card and post cards */
+.pa-card-image {
+    display: block;
+    vertical-align: middle;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 100%;
+    height: auto;
+}
+
+.pa-card-video-holder {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* For upload by url input */
+.center-placeholder {
+    border-radius: 3px;
+}
+
+.center-placeholder::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.center-placeholder:-moz-placeholder { /* Firefox 18- */
+    text-align: center;
+}
+
+.center-placeholder::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;
+}
+
+.center-placeholder:-ms-input-placeholder {
+    text-align: center;
+}
+
+.title-action {
+    padding-top: 0px;
+}

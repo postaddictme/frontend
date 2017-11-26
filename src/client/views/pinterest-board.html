@@ -1,0 +1,48 @@
+<page-heading title="{{'PINTEREST_BOARD' | translate}}" steps="breadcrumbSteps"></page-heading>
+
+<div class="wrapper wrapper-content animated fadeIn">
+
+    <!-- If account is verified and mustn't pay -->
+    <div ng-show="account.shouldPay === 0 || account.shouldPay === 1">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12">
+
+                <div class="col-md-4 col-sm-4">
+                    <pinterest-board-card account="account" board="board"></pinterest-board-card>
+                </div>
+
+                <div class="col-md-4 col-sm-4" id="spinnerDiv">
+                    <add-post-card title="vm.addPostCardTitle" add-new-post="vm.addNewPost" show-choose-methods="vm.showChooseMethods" upload-by-url="vm.uploadByUrl"
+                                   upload="vm.upload" uploading-from-url="vm.uploadingFromUrl" uploading-from-storage="vm.uploadingFromStorage"
+                                   upload-from-url-button-text="vm.uploadFromUrlButtonText" upload-from-storage-button-text="vm.uploadFromStorageButtonText"
+                                   uploading="vm.uploading" obj="obj" hide-upload-by-url="false"
+                                   pattern-formats="'image/*'" accept-formats="'.jpeg,.jpg,.png'"></add-post-card>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="padding-top: 20px;" ng-show="boardMedia.length > 0">
+            <div class="col-lg-10 col-lg-offset-1 col-md-12 col-sm-12" infinite-scroll='vm.nextPage()' infinite-scroll-disabled='vm.loadImagesBusy' infinite-scroll-distance='1'>
+                <div class="col-lg-4 col-md-4 col-sm-4" ng-repeat="media in boardMedia">
+                    <pinterest-post-card media="media" edit-post="vm.editPost" confirm-cancel-post="vm.confirmCancelPost" cancel-post="vm.cancelPost" confirm-delete-post="vm.confirmDeletePost" delete-post="vm.deletePost"></pinterest-post-card>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 20px;" ng-hide="boardMedia.length > 0">
+            <div class="col-lg-12">
+                <h1 class="font-bold text-center">
+                    <i class="twa twa-3x twa-rocket"></i>
+                </h1>
+                <h3 class="font-bold text-center">
+                    {{"START_UPLOADING_PINTEREST" | translate}}.
+                </h3>
+
+                <div class="error-desc text-center">
+                    {{"ALL_UPLOADED_POSTS_WILL_BE_DISPLAYED_HERE" | translate}}.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

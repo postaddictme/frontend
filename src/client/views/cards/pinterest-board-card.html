@@ -1,0 +1,30 @@
+<!--
+    Pinterest Board Card
+-->
+<div class="ibox float-e-margins">
+    <div class="ibox-title text-center" style="background-color: #AB171E; color: #fff;">
+        <span ng-show="board.name">
+            {{board.name}}
+        </span>
+        <span ng-hide="board.name">
+            {{'BOARD_HAS_NO_NAME' | translate}}
+        </span>
+        <div class="ibox-tools" style="float: right;">
+            <a ng-href="{{board.url}}" target="blank" ng-show="board.url" style="margin-left: 1px;">
+                <i uib-tooltip-placement="top" uib-tooltip="{{'SHOW_BOARD_IN_PINTEREST' | translate}}" class="fa fa-external-link-square" style="color: #fff;"></i>
+            </a>
+        </div>
+
+    </div>
+    <div class="photo-grid" ui-sref="dashboard.pinterest-board({accountId: account.id, boardId:board.id})" style="cursor: pointer;">
+        <div class="ibox-content no-padding border-left-right pa-card-media-holder" style="max-width: 100%;">
+            <figure>
+                <img alt="image" class="pa-card-image" ng-if="board.imageUrl != null" ng-src="{{board.imageUrl}}">
+                <img alt="image" class="pa-card-image" ng-if="board.imageUrl == null" src="images/pinterest-board.png">
+                <!--<div ng-if="board.image == null" style="background-color: #fff; height: 235px; width: 100%;" class="text-center"><i class="twa twa-3x twa-chicken" style="margin-top: 20%;"></i></div>-->
+                <figcaption ng-if="board.description != ''"><p><div ng-bind-html="board.description"></div></p></figcaption>
+                <figcaption ng-if="board.description == ''"><p><div class="text-center">{{'BOARD_HAS_NO_DESCRIPTION' | translate}}</div></p></figcaption>
+            </figure>
+        </div>
+    </div>
+</div>

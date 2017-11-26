@@ -1,0 +1,64 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-md-8 col-xs-4">
+        <!--<h2>{{'NAV_ACCOUNTS' | translate}}</h2>-->
+        <breadcrumb steps="breadcrumbSteps"></breadcrumb>
+    </div>
+    <div class="col-md-4 col-xs-8">
+
+        <div class="title-action">
+            <div style="position: relative;
+                        display: inline-block;
+                        vertical-align: middle;">
+                <button ng-class="{'btn btn-primary btn-xs': showAccounts.Instagram, 'btn btn-white btn-xs': !showAccounts.Instagram}"
+                        ng-click="showAccounts.Instagram = !showAccounts.Instagram"
+                        uib-tooltip-placement="top" uib-tooltip="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </button>
+                <button ng-class="{'btn btn-primary btn-xs': showAccounts.Pinterest, 'btn btn-white btn-xs': !showAccounts.Pinterest}"
+                        ng-click="showAccounts.Pinterest = !showAccounts.Pinterest"
+                        uib-tooltip-placement="top" uib-tooltip="Pinterest">
+                    <i class="fa fa-pinterest"></i>
+                </button>
+            </div>
+            &nbsp;
+            <a class="btn btn-xs btn-outline btn-success" ng-click="vm.openAddAccountDialog()">{{'DASH_ACCOUNTS_ADD_NEW_ACCOUNT' | translate}}</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row"></div>
+    <br>
+
+    <!-- Instagram Accounts -->
+    <div class="row">
+        <div class="col-md-12" ng-show="vm.instagramAccounts.length > 0 && showAccounts.Instagram">
+
+            <div class="col-md-3" ng-repeat-start="instagramAccount in vm.instagramAccounts">
+                <account-card account="instagramAccount" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></account-card>
+            </div>
+            <div class="clearfix" ng-if="($index+1)%4==0"></div>
+            <div ng-repeat-end=""></div>
+        </div>
+    </div>
+
+    <!--Pinterest Accounts-->
+    <div class="row">
+        <div class="col-md-12" ng-show="vm.pinterestAccounts.length > 0 && showAccounts.Pinterest">
+
+            <div class="col-md-3" ng-repeat-start="pinterestAccount in vm.pinterestAccounts">
+                <pinterest-account-card account="pinterestAccount" user-info="vm.userInfo" confirm-delete-account="vm.confirmDeleteAccount" delete-account="vm.deleteAccount" state="vm.state"></pinterest-account-card>
+            </div>
+            <div class="clearfix" ng-if="($index+1)%4==0"></div>
+            <div ng-repeat-end=""></div>
+        </div>
+    </div>
+
+    <!-- No Accounts -->
+    <div class="col-md-12" ng-show="vm.pinterestAccounts.length === 0 && vm.instagramAccounts.length === 0 ">
+        <div class="row text-center">
+            <h2>{{'DASH_HOME_H' | translate}}</h2>
+            <p>{{'DASH_HOME_P' | translate}}</p>
+            <a ui-sref="dashboard.add-account" class="btn btn-primary">{{'DASH_ACCOUNTS_ADD_NEW_ACCOUNT' | translate}}</a>
+        </div>
+    </div>
+</div>
